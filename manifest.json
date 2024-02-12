@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+
+  "name": "Copy Issue ID",
+  "version": "1.0",
+  "author": "Takahiro Fujii",
+  "description": "Copy issue ID and convert it as a link to the issue tracker",
+
+  "permissions": [
+    "activeTab",
+    "clipboardWrite",
+    "contextMenus",
+    "storage"
+  ],
+
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "type": "module"
+  },
+
+  "options_ui": {
+    "page": "options/options.html"
+  }
+
+}
