@@ -22,9 +22,24 @@
                 </table>
             </div>
             <div>
-                <button id="rules-add-button" type="button">Add rule</button>
+                <!-- Add rule button -->
+                <button id="rules-add-button" type="button">➕ Add rule</button>
             </div>
         </form>
+
+        <h2>Export</h2>
+        <div>
+            Backup your rules to a file:<br />
+            <!-- Download file button -->
+            <button id="export-button" type="button">Export</button>
+        </div>
+
+        <h2>Import</h2>
+        <div>
+            <!-- Upload file input -->
+            <label for="import-file">Choose a JSON file to import:</label><br />
+            <input id="import-file" type="file" accept=".json" />
+        </div>
     </body>
 
     <script src="options.js" type="module"></script>

@@ -1,5 +1,7 @@
 import { loadRules, saveRules } from '../storage.js';
 
+const EXPORT_FILENAME = 'copy-issue-id.json';
+
 const rulesTable = document.getElementById('rules-input-table');
 
 const state = {
@@ -25,6 +27,33 @@ document.getElementById('rules-add-button').addEventListener('click', () => {
     state.rules.push(newRule);
     state.ruleLines.push(tr);
     rulesTable.appendChild(tr);
+});
+
+document.getElementById('export-button').addEventListener('click', () => {
+    const rules = state.rules;
+    const rulesString = JSON.stringify(rules, null, 2);
+    const blob = new Blob([rulesString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = EXPORT_FILENAME;
+    a.click();
+    URL.revokeObjectURL(url);
+});
+
+document.getElementById('import-file').addEventListener('change', e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = async e => {
+        const rules = JSON.parse(e.target.result);
+        state.rules = rules;
+        // Remove all existing rules
+        state.ruleLines.forEach(tr => tr.remove());
+        state.ruleLines = rules.map(createRuleElement);
+        state.ruleLines.forEach(tr => rulesTable.appendChild(tr));
+        saveRules(rules);
+    };
+    reader.readAsText(file);
 });
 
 function createRuleElement(rule) {
