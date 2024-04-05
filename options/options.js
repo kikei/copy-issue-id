@@ -63,6 +63,7 @@ function createRuleElement(rule) {
     const projectKeyInput = document.createElement('input');
     projectKeyInput.type = 'text';
     projectKeyInput.value = rule.pk;
+    projectKeyInput.size = 20;
 
     const replaceWithTd = document.createElement('td');
     const replaceWithInput = document.createElement('input');

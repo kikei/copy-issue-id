@@ -1,13 +1,46 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
+        <style type="text/css">
+h1, h2 {
+  margin: 0.5rem 0 0.25rem 0;
+}
+.table-full {
+  width: 100%;
+  table-layout: fixed;
+}
+.table-rules input {
+  width: 100%;
+}
+.table-rules th {
+  text-align: left;
+}
+.table-rules td {
+  padding: 0 0.5rem 0 0;
+}
+.col-project-key {
+  width: 10rem;
+}
+.col-replace-with {
+  width: auto;
+}
+.col-actions {
+  width: 4rem;
+}
+        </style>
     </head>
     <body>
+        <h1>Options</h1>
         <form>
             <div>
-                <table id="rules-input-table">
+                <table id="rules-input-table" class="table-rules table-full">
+                    <colgroup>
+                        <col class="col-project-key" />
+                        <col class="col-replace-with" />
+                        <col class="col-actions" />
+                    </colgroup>
                     <tr>
                         <th>
                             Project key
